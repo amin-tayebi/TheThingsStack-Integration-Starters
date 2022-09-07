@@ -73,9 +73,13 @@ for anUplink in someUplinks:
 	received_at = someJSON["received_at"]
 
 	uplink_message = someJSON["uplink_message"];
-	f_port = uplink_message["f_port"];
+	#f_port = uplink_message["f_port"];
+	#f_cnt = uplink_message.get("f_cnt", "");	# first uplink is zero which is missing
+	#frm_payload = uplink_message["frm_payload"];
+	f_port = uplink_message.get("f_port", "");
 	f_cnt = uplink_message.get("f_cnt", "");	# first uplink is zero which is missing
-	frm_payload = uplink_message["frm_payload"];
+	frm_payload = uplink_message.get("frm_payload");
+	
 	rssi = uplink_message["rx_metadata"][0]["rssi"];
 	snr = uplink_message["rx_metadata"][0]["snr"];
 
